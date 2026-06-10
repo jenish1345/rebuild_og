@@ -53,19 +53,14 @@ export function WhoWeAreSection() {
               </div>
             </div>
 
-            {/* Parallax Image Placeholder */}
-            <div className="mt-24 h-[400px] w-full rounded-2xl overflow-hidden relative">
-              <motion.div 
-                style={{ y }}
-                className="absolute inset-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-primary/5 via-primary/10 to-transparent border border-border/50 flex items-center justify-center"
-              >
-                {/* Abstract Visual inside the parallax */}
-                <div className="w-full h-full flex items-center justify-center gap-4 opacity-20">
-                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
-                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
-                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
-                </div>
-              </motion.div>
+            {/* Sleek Photographic Image */}
+            <div className="mt-24 h-[400px] w-full rounded-[2rem] overflow-hidden relative group">
+              <img 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" 
+                alt="Enterprise Architecture"
+                className="absolute inset-0 w-full h-full object-cover filter grayscale mix-blend-luminosity opacity-80 group-hover:scale-105 transition-transform duration-[2s] ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             </div>
 
           </div>
