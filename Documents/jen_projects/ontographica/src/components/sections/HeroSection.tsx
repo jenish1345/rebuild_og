@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { NetworkCanvas } from "@/components/ui/network-canvas";
 
 export function HeroSection() {
   return (
@@ -32,16 +33,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Sleek Visual Image */}
-          <div className="relative h-[500px] lg:h-[650px] w-full rounded-[2.5rem] bg-muted/10 overflow-hidden hidden md:block">
-            {/* High-quality abstract architectural/tech image, desaturated for the premium feel */}
-            <img 
-              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" 
-              alt="Enterprise Server Architecture"
-              className="absolute inset-0 w-full h-full object-cover filter grayscale opacity-90 mix-blend-luminosity hover:scale-105 transition-transform duration-1000 ease-in-out"
-            />
-            {/* Overlay to ensure it blends seamlessly with the background in both light and dark modes */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/40 to-transparent" />
+          {/* Right Column: Interactive Knowledge Constellation */}
+          <div className="relative h-[500px] lg:h-[650px] w-full rounded-[2.5rem] bg-muted/10 overflow-hidden hidden md:block border border-border/50 shadow-inner">
+            <NetworkCanvas />
+            {/* Overlay to ensure it blends seamlessly with the background */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/10 to-transparent pointer-events-none" />
           </div>
 
         </div>
