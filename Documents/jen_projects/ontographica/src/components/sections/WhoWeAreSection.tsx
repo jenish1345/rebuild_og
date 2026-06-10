@@ -1,59 +1,73 @@
-import * as React from "react";
-import { CheckCircle2 } from "lucide-react";
+"use client";
 
-const focusAreas = [
-  "AI & Machine Learning",
-  "Data Intelligence",
-  "Knowledge Graphs",
-  "Advanced Analytics",
-  "Enterprise Transformation",
-  "Digital Innovation",
-];
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function WhoWeAreSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
-    <section id="company" className="py-24 md:py-32 bg-background">
+    <section id="company" ref={containerRef} className="py-32 md:py-48 bg-muted/20 relative overflow-hidden">
       <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Professional Image / Video Placeholder */}
-          <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] w-full rounded-2xl overflow-hidden bg-muted border border-border/50">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50">
-              <span className="text-sm font-medium tracking-widest uppercase">Executive Media</span>
+        
+        {/* Editorial Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Left Column: Huge Number & Sticky Label */}
+          <div className="lg:col-span-4 relative">
+            <div className="sticky top-40">
+              <span className="text-[12rem] leading-none font-bold text-foreground/5 tracking-tighter block -ml-4">
+                01
+              </span>
+              <h2 className="text-sm uppercase tracking-[0.3em] font-semibold text-primary mt-8">
+                The Firm
+              </h2>
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
-                Redefining the Future of Enterprise Intelligence
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We are a strategic consulting and engineering firm dedicated to transforming complex enterprise data into actionable intelligence. Our mission is to bridge the gap between abstract technology and tangible business value.
-              </p>
-            </div>
-
-            <div className="space-y-8">
+          {/* Right Column: Massive Editorial Typography */}
+          <div className="lg:col-span-8">
+            <h3 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground leading-[1.2] mb-16">
+              We are a strategic engineering firm dedicated to bridging the gap between <span className="italic text-muted-foreground">abstract artificial intelligence</span> and tangible enterprise value.
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">Our Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To become the global standard for enterprise knowledge representation and intelligent decision systems.
+                <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Our Vision</h4>
+                <p className="text-lg text-foreground/80 font-light leading-relaxed">
+                  To establish the global standard for enterprise knowledge representation, turning fragmented data silos into unified, intelligent decision systems.
                 </p>
               </div>
-
+              
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Core Focus Areas</h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {focusAreas.map((area, index) => (
-                    <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>{area}</span>
-                    </li>
-                  ))}
-                </ul>
+                <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">The Approach</h4>
+                <p className="text-lg text-foreground/80 font-light leading-relaxed">
+                  We reject off-the-shelf software. We engineer bespoke, scalable intelligence layers designed exclusively for the complexity of Fortune 500 organizations.
+                </p>
               </div>
             </div>
+
+            {/* Parallax Image Placeholder */}
+            <div className="mt-24 h-[400px] w-full rounded-2xl overflow-hidden relative">
+              <motion.div 
+                style={{ y }}
+                className="absolute inset-[-20%] w-[140%] h-[140%] bg-gradient-to-br from-primary/5 via-primary/10 to-transparent border border-border/50 flex items-center justify-center"
+              >
+                {/* Abstract Visual inside the parallax */}
+                <div className="w-full h-full flex items-center justify-center gap-4 opacity-20">
+                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
+                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
+                  <div className="w-px h-[200%] bg-foreground/20 rotate-45" />
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </div>
       </div>

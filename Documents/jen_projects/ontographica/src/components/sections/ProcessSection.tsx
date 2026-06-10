@@ -1,47 +1,96 @@
-import * as React from "react";
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const steps = [
-  { phase: "01", name: "Discover", description: "Audit existing data assets and align on strategic business objectives." },
-  { phase: "02", name: "Design", description: "Architect scalable infrastructure and select appropriate AI methodologies." },
-  { phase: "03", name: "Build", description: "Engineer data pipelines, train models, and develop the intelligence layer." },
-  { phase: "04", name: "Deploy", description: "Seamlessly integrate solutions into enterprise environments with zero downtime." },
-  { phase: "05", name: "Scale", description: "Monitor performance, optimize resources, and expand capabilities enterprise-wide." },
+  { 
+    phase: "01", 
+    name: "Strategic Discovery", 
+    description: "We conduct a deep architectural audit of your existing data assets, identifying silos, inefficiencies, and untapped value. This phase culminates in a comprehensive intelligence roadmap aligned with executive business objectives." 
+  },
+  { 
+    phase: "02", 
+    name: "System Design", 
+    description: "Our engineers architect a highly scalable infrastructure designed specifically for your regulatory environment. We select the appropriate AI methodologies—from LLMs to complex knowledge graphs—to ensure long-term resilience." 
+  },
+  { 
+    phase: "03", 
+    name: "Engineering & Build", 
+    description: "We construct robust data pipelines, train bespoke machine learning models, and develop the core intelligence layer. Every line of code is optimized for performance, security, and integration capabilities." 
+  },
+  { 
+    phase: "04", 
+    name: "Deployment", 
+    description: "Solutions are seamlessly integrated into your enterprise environment with zero operational downtime. We handle the complex orchestration of microservices and assure flawless transition." 
+  },
+  { 
+    phase: "05", 
+    name: "Scale & Optimize", 
+    description: "Post-deployment, we continuously monitor algorithmic performance, optimize cloud resource consumption, and expand intelligence capabilities enterprise-wide." 
+  },
 ];
 
 export function ProcessSection() {
-  return (
-    <section id="process" className="py-24 md:py-32 bg-alternate">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
-            Methodical Implementation
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Our enterprise process is engineered to minimize risk, ensure compliance, and guarantee measurable business outcomes at every phase.
-          </p>
-        </div>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
 
-        <div className="relative">
-          {/* Horizontal Line for Desktop */}
-          <div className="hidden lg:block absolute top-6 left-[10%] right-[10%] h-px bg-border" />
+  return (
+    <section id="process" ref={containerRef} className="py-32 bg-background relative">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="relative flex flex-col items-center text-center group">
-                <div className="h-12 w-12 rounded-full bg-background border border-border flex items-center justify-center text-sm font-semibold text-foreground z-10 mb-6 group-hover:border-primary group-hover:text-primary transition-colors duration-300">
-                  {step.phase}
-                </div>
-                {/* Vertical Line for Mobile */}
-                {index !== steps.length - 1 && (
-                  <div className="lg:hidden absolute top-12 bottom-[-3rem] left-1/2 w-px bg-border -translate-x-1/2" />
-                )}
-                <h3 className="text-xl font-semibold text-foreground mb-3">{step.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed max-w-[200px]">
-                  {step.description}
+          {/* Left Sticky Sidebar */}
+          <div className="lg:col-span-5 relative">
+            <div className="sticky top-40 h-[60vh] flex flex-col justify-between">
+              <div>
+                <h2 className="text-sm uppercase tracking-[0.3em] font-semibold text-primary mb-6">
+                  Implementation
+                </h2>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+                  The Methodical Process
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                  Engineered to minimize risk, ensure compliance, and guarantee measurable business outcomes at every phase of deployment.
                 </p>
               </div>
-            ))}
+
+              {/* Progress Line */}
+              <div className="relative h-32 w-[2px] bg-border/40 overflow-hidden mt-12 hidden lg:block">
+                <motion.div 
+                  className="absolute top-0 left-0 w-full bg-primary"
+                  style={{ 
+                    height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]) 
+                  }}
+                />
+              </div>
+            </div>
           </div>
+
+          {/* Right Scrolling Content */}
+          <div className="lg:col-span-7">
+            <div className="flex flex-col gap-24 lg:gap-40 pt-12 lg:pt-[20vh] pb-[20vh]">
+              {steps.map((step, index) => (
+                <div key={index} className="relative group">
+                  <div className="flex flex-col gap-6">
+                    <span className="text-5xl md:text-7xl font-bold text-muted/50 tracking-tighter transition-colors group-hover:text-primary/20">
+                      {step.phase}
+                    </span>
+                    <h4 className="text-2xl md:text-3xl font-semibold text-foreground">
+                      {step.name}
+                    </h4>
+                    <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
