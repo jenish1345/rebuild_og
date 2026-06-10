@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-geist-sans", // Overwriting the variable to keep tailwind classes intact
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Ontographica | Enterprise AI & Data Intelligence",
-  description: "Transforming Data Into Strategic Intelligence. We are a trusted partner for Fortune 500 organizations for AI, Data Intelligence, and Strategic Consulting.",
+  title: "Ontographica | Knowledge Architecture for AI",
+  description: "Enterprise ontology and knowledge graph consulting. Semantic infrastructure that scales with your AI ambitions.",
 };
 
 export default function RootLayout({
@@ -27,10 +27,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
