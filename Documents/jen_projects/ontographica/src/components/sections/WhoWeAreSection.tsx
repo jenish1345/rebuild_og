@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { NetworkCanvas } from "@/components/ui/network-canvas";
 
 export function WhoWeAreSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,14 +54,10 @@ export function WhoWeAreSection() {
               </div>
             </div>
 
-            {/* Sleek Photographic Image */}
-            <div className="mt-24 h-[400px] w-full rounded-[2rem] overflow-hidden relative group">
-              <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" 
-                alt="Enterprise Architecture"
-                className="absolute inset-0 w-full h-full object-cover filter grayscale mix-blend-luminosity opacity-80 group-hover:scale-105 transition-transform duration-[2s] ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            {/* Cohesive Network Canvas */}
+            <div className="mt-24 h-[400px] w-full rounded-[2rem] overflow-hidden relative group border border-border/20 shadow-2xl bg-muted/5">
+              <NetworkCanvas />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none" />
             </div>
 
           </div>
