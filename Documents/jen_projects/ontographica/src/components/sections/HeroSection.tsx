@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { NetworkCanvas } from "@/components/ui/network-canvas";
+import { Magnetic } from "@/components/ui/magnetic";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
@@ -12,25 +14,49 @@ export function HeroSection() {
           
           {/* Left Column: Authentic Content */}
           <div className="max-w-xl">
-            <p className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-6">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-6"
+            >
               Ontographica
-            </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-foreground leading-[1.05] mb-6">
+            </motion.p>
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-foreground leading-[1.05] mb-6"
+            >
               Where Data <br /> Becomes Meaningful <span className="text-muted-foreground italic font-light">Intelligence.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mb-12">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mb-12"
+            >
               Enterprise ontology and knowledge graph consulting. 
               Semantic infrastructure that scales with your AI ambitions.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Button className="w-full sm:w-auto rounded-full px-8 h-12 text-sm font-medium bg-foreground text-background hover:bg-foreground/90">
-                Explore Infrastructure <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" className="w-full sm:w-auto rounded-full px-8 h-12 text-sm font-medium bg-transparent border-border hover:bg-muted/50">
-                Consulting Services
-              </Button>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row items-center gap-4"
+            >
+              <Magnetic>
+                <Button className="w-full sm:w-auto rounded-full px-8 h-12 text-sm font-medium bg-foreground text-background hover:bg-foreground/90">
+                  Explore Infrastructure <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Magnetic>
+              <Magnetic>
+                <Button variant="outline" className="w-full sm:w-auto rounded-full px-8 h-12 text-sm font-medium bg-transparent border-border hover:bg-muted/50">
+                  Consulting Services
+                </Button>
+              </Magnetic>
+            </motion.div>
           </div>
 
           {/* Right Column: Interactive Knowledge Constellation */}

@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { TrustSection } from "@/components/sections/TrustSection";
+import { TrustBannerSection } from "@/components/sections/TrustBannerSection";
 import { WhoWeAreSection } from "@/components/sections/WhoWeAreSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { IndustriesSection } from "@/components/sections/IndustriesSection";
@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 flex flex-col">
         <HeroSection />
-        <TrustSection />
+        <TrustBannerSection />
         <WhoWeAreSection />
         <ServicesSection />
         <IndustriesSection />

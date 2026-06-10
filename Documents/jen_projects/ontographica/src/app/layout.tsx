@@ -13,6 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export const metadata: Metadata = {
   title: "Ontographica | Knowledge Architecture for AI",
@@ -38,6 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <CustomCursor />
         </ThemeProvider>
       </body>
     </html>
